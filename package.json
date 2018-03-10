@@ -1,0 +1,18 @@
+{
+  "name": "elm-homeworlds",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "elm-package install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "elm-make src/Main.elm --warn --output=static/index.html"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "elm": "^0.18.0",
+    "node-static": "^0.7.10"
+  }
+}
