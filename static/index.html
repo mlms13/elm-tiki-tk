@@ -20688,54 +20688,191 @@ var _user$project$Tiki_Config$Config = F6(
 	function (a, b, c, d, e, f) {
 		return {color: a, size: b, font: c, link: d, heading: e, decoration: f};
 	});
-var _user$project$Tiki_Styles$generate = function (_p0) {
-	var _p1 = _p0;
-	var _p2 = _p1.color;
-	return {
-		danger: F3(
-			function (mkElement, attrs, child) {
-				return A2(
-					mkElement,
-					{
+var _user$project$Tiki_Styles$makeStyles = F2(
+	function (styles, makeEl) {
+		return function (_p0) {
+			return makeEl(
+				A2(_elm_lang$core$List$append, styles, _p0));
+		};
+	});
+var _user$project$Tiki_Styles$generate = function (_p1) {
+	var _p2 = _p1;
+	var _p4 = _p2.decoration;
+	var _p3 = _p2.color;
+	var primary = {
+		ctor: '::',
+		_0: _mdgriffith$stylish_elephants$Element_Background$color(_p3.primary),
+		_1: {
+			ctor: '::',
+			_0: _mdgriffith$stylish_elephants$Element_Border$color(_p3.primary),
+			_1: {
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element_Font$color(_p3.fgInverse),
+				_1: {ctor: '[]'}
+			}
+		}
+	};
+	var success = {
+		ctor: '::',
+		_0: _mdgriffith$stylish_elephants$Element_Background$color(_p3.success),
+		_1: {
+			ctor: '::',
+			_0: _mdgriffith$stylish_elephants$Element_Border$color(_p3.success),
+			_1: {
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element_Font$color(_p3.fgInverse),
+				_1: {ctor: '[]'}
+			}
+		}
+	};
+	var warning = {
+		ctor: '::',
+		_0: _mdgriffith$stylish_elephants$Element_Background$color(_p3.warning),
+		_1: {
+			ctor: '::',
+			_0: _mdgriffith$stylish_elephants$Element_Border$color(_p3.warning),
+			_1: {
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element_Font$color(_p3.fgInverse),
+				_1: {ctor: '[]'}
+			}
+		}
+	};
+	var danger = {
+		ctor: '::',
+		_0: _mdgriffith$stylish_elephants$Element_Background$color(_p3.danger),
+		_1: {
+			ctor: '::',
+			_0: _mdgriffith$stylish_elephants$Element_Border$color(_p3.danger),
+			_1: {
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element_Font$color(_p3.fgInverse),
+				_1: {ctor: '[]'}
+			}
+		}
+	};
+	var btn = {
+		ctor: '::',
+		_0: _mdgriffith$stylish_elephants$Element_Border$width(_p4.borderWidth),
+		_1: {
+			ctor: '::',
+			_0: _mdgriffith$stylish_elephants$Element_Border$solid,
+			_1: {
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element_Border$rounded(_p4.borderRadius),
+				_1: {
+					ctor: '::',
+					_0: _mdgriffith$stylish_elephants$Element_Border$shadow(_p4.boxShadow),
+					_1: {
 						ctor: '::',
-						_0: _mdgriffith$stylish_elephants$Element_Background$color(_p2.danger),
-						_1: attrs
-					},
-					child);
-			}),
-		btn: F3(
-			function (mkElement, attrs, child) {
-				return A2(
-					mkElement,
-					{
-						ctor: '::',
-						_0: _mdgriffith$stylish_elephants$Element_Background$color(_p2.$default),
+						_0: _mdgriffith$stylish_elephants$Element$paddingEach(_p2.size.normal.padding),
 						_1: {
 							ctor: '::',
-							_0: _mdgriffith$stylish_elephants$Element$paddingEach(_p1.size.normal.padding),
-							_1: attrs
+							_0: _mdgriffith$stylish_elephants$Element_Font$center,
+							_1: {ctor: '[]'}
 						}
-					},
-					child);
-			})
+					}
+				}
+			}
+		}
+	};
+	return {
+		danger: _user$project$Tiki_Styles$makeStyles(danger),
+		warning: _user$project$Tiki_Styles$makeStyles(warning),
+		success: _user$project$Tiki_Styles$makeStyles(success),
+		primary: _user$project$Tiki_Styles$makeStyles(primary),
+		btn: _user$project$Tiki_Styles$makeStyles(btn)
 	};
 };
-var _user$project$Tiki_Styles$Styles = F2(
-	function (a, b) {
-		return {danger: a, btn: b};
+var _user$project$Tiki_Styles$Styles = F5(
+	function (a, b, c, d, e) {
+		return {danger: a, warning: b, success: c, primary: d, btn: e};
 	});
 var _user$project$Main$_p0 = _user$project$Tiki_Styles$generate(_user$project$Tiki_Config$default);
 var _user$project$Main$btn = _user$project$Main$_p0.btn;
+var _user$project$Main$danger = _user$project$Main$_p0.danger;
+var _user$project$Main$warning = _user$project$Main$_p0.warning;
+var _user$project$Main$primary = _user$project$Main$_p0.primary;
+var _user$project$Main$success = _user$project$Main$_p0.success;
 var _user$project$Main$main = _elm_lang$virtual_dom$Native_VirtualDom.staticProgram(
 	A2(
 		_mdgriffith$stylish_elephants$Element$layout,
 		{ctor: '[]'},
 		A2(
-			_user$project$Main$btn(_mdgriffith$stylish_elephants$Element_Input$button),
-			{ctor: '[]'},
+			_mdgriffith$stylish_elephants$Element$row,
 			{
-				onPress: _elm_lang$core$Maybe$Nothing,
-				label: _mdgriffith$stylish_elephants$Element$text('Hi')
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element$alignTop,
+				_1: {
+					ctor: '::',
+					_0: _mdgriffith$stylish_elephants$Element$padding(20),
+					_1: {
+						ctor: '::',
+						_0: _mdgriffith$stylish_elephants$Element$spacing(5),
+						_1: {ctor: '[]'}
+					}
+				}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_user$project$Main$danger(
+						_user$project$Main$btn(_mdgriffith$stylish_elephants$Element_Input$button)),
+					{
+						ctor: '::',
+						_0: _mdgriffith$stylish_elephants$Element$spacing(5),
+						_1: {ctor: '[]'}
+					},
+					{
+						onPress: _elm_lang$core$Maybe$Nothing,
+						label: _mdgriffith$stylish_elephants$Element$text('Danger')
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_user$project$Main$warning(
+							_user$project$Main$btn(_mdgriffith$stylish_elephants$Element_Input$button)),
+						{
+							ctor: '::',
+							_0: _mdgriffith$stylish_elephants$Element$spacing(5),
+							_1: {ctor: '[]'}
+						},
+						{
+							onPress: _elm_lang$core$Maybe$Nothing,
+							label: _mdgriffith$stylish_elephants$Element$text('Warning')
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_user$project$Main$success(
+								_user$project$Main$btn(_mdgriffith$stylish_elephants$Element_Input$button)),
+							{
+								ctor: '::',
+								_0: _mdgriffith$stylish_elephants$Element$spacing(5),
+								_1: {ctor: '[]'}
+							},
+							{
+								onPress: _elm_lang$core$Maybe$Nothing,
+								label: _mdgriffith$stylish_elephants$Element$text('Success')
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_user$project$Main$primary(
+									_user$project$Main$btn(_mdgriffith$stylish_elephants$Element_Input$button)),
+								{
+									ctor: '::',
+									_0: _mdgriffith$stylish_elephants$Element$spacing(5),
+									_1: {ctor: '[]'}
+								},
+								{
+									onPress: _elm_lang$core$Maybe$Nothing,
+									label: _mdgriffith$stylish_elephants$Element$text('Primary')
+								}),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
 			})));
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
