@@ -1,4 +1,4 @@
-module Tiki.Config exposing (..)
+module Tiki.Style.Config exposing (..)
 
 import Color exposing (Color, rgb, rgba)
 import Element.Font exposing (Font, typeface, sansSerif, serif, monospace)

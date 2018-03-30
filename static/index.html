@@ -20502,10 +20502,10 @@ var _mdgriffith$stylish_elephants$Element_Input$Column = {ctor: 'Column'};
 var _mdgriffith$stylish_elephants$Element_Input$radio = _mdgriffith$stylish_elephants$Element_Input$radioHelper(_mdgriffith$stylish_elephants$Element_Input$Column);
 var _mdgriffith$stylish_elephants$Element_Input$Row = {ctor: 'Row'};
 var _mdgriffith$stylish_elephants$Element_Input$radioRow = _mdgriffith$stylish_elephants$Element_Input$radioHelper(_mdgriffith$stylish_elephants$Element_Input$Row);
-var _user$project$Tiki_Config$defaultSizeNormal = {
+var _user$project$Tiki_Style_Config$defaultSizeNormal = {
 	padding: {top: 8, left: 16, bottom: 8, right: 16}
 };
-var _user$project$Tiki_Config$defaultColor = {
+var _user$project$Tiki_Style_Config$defaultColor = {
 	primary: A3(_elm_lang$core$Color$rgb, 38, 147, 179),
 	info: A3(_elm_lang$core$Color$rgb, 38, 147, 179),
 	success: A3(_elm_lang$core$Color$rgb, 40, 189, 53),
@@ -20515,15 +20515,15 @@ var _user$project$Tiki_Config$defaultColor = {
 	fg: A3(_elm_lang$core$Color$rgb, 34, 34, 34),
 	fgInverse: A3(_elm_lang$core$Color$rgb, 255, 255, 255)
 };
-var _user$project$Tiki_Config$Sides = F4(
+var _user$project$Tiki_Style_Config$Sides = F4(
 	function (a, b, c, d) {
 		return {top: a, right: b, bottom: c, left: d};
 	});
-var _user$project$Tiki_Config$multiplySides = F2(
+var _user$project$Tiki_Style_Config$multiplySides = F2(
 	function (_p0, mult) {
 		var _p1 = _p0;
 		return A4(
-			_user$project$Tiki_Config$Sides,
+			_user$project$Tiki_Style_Config$Sides,
 			_elm_lang$core$Basics$round(
 				_elm_lang$core$Basics$toFloat(_p1.top) * mult),
 			_elm_lang$core$Basics$round(
@@ -20533,47 +20533,47 @@ var _user$project$Tiki_Config$multiplySides = F2(
 			_elm_lang$core$Basics$round(
 				_elm_lang$core$Basics$toFloat(_p1.left) * mult));
 	});
-var _user$project$Tiki_Config$BoxShadow = F4(
+var _user$project$Tiki_Style_Config$BoxShadow = F4(
 	function (a, b, c, d) {
 		return {offset: a, blur: b, size: c, color: d};
 	});
-var _user$project$Tiki_Config$defaultDecoration = {
+var _user$project$Tiki_Style_Config$defaultDecoration = {
 	borderWidth: 1,
 	borderRadius: 3,
 	boxShadow: A4(
-		_user$project$Tiki_Config$BoxShadow,
+		_user$project$Tiki_Style_Config$BoxShadow,
 		{ctor: '_Tuple2', _0: 1.0, _1: 1.0},
 		0.0,
 		0.0,
 		A4(_elm_lang$core$Color$rgba, 0, 0, 0, 0.15)),
 	boxShadowInset: A4(
-		_user$project$Tiki_Config$BoxShadow,
+		_user$project$Tiki_Style_Config$BoxShadow,
 		{ctor: '_Tuple2', _0: 0.0, _1: 1.0},
 		2.0,
 		0.0,
 		A4(_elm_lang$core$Color$rgba, 0, 0, 0, 0.2))
 };
-var _user$project$Tiki_Config$ColorConfig = F8(
+var _user$project$Tiki_Style_Config$ColorConfig = F8(
 	function (a, b, c, d, e, f, g, h) {
 		return {primary: a, info: b, success: c, warning: d, danger: e, $default: f, fg: g, fgInverse: h};
 	});
-var _user$project$Tiki_Config$DecorationConfig = F4(
+var _user$project$Tiki_Style_Config$DecorationConfig = F4(
 	function (a, b, c, d) {
 		return {borderWidth: a, borderRadius: b, boxShadow: c, boxShadowInset: d};
 	});
-var _user$project$Tiki_Config$SizeConfig = function (a) {
+var _user$project$Tiki_Style_Config$SizeConfig = function (a) {
 	return {padding: a};
 };
-var _user$project$Tiki_Config$defaultSizeSmall = _user$project$Tiki_Config$SizeConfig(
-	A2(_user$project$Tiki_Config$multiplySides, _user$project$Tiki_Config$defaultSizeNormal.padding, 0.9));
-var _user$project$Tiki_Config$defaultSizeLarge = _user$project$Tiki_Config$SizeConfig(
-	A2(_user$project$Tiki_Config$multiplySides, _user$project$Tiki_Config$defaultSizeNormal.padding, 1.2));
-var _user$project$Tiki_Config$FontConfig = F3(
+var _user$project$Tiki_Style_Config$defaultSizeSmall = _user$project$Tiki_Style_Config$SizeConfig(
+	A2(_user$project$Tiki_Style_Config$multiplySides, _user$project$Tiki_Style_Config$defaultSizeNormal.padding, 0.9));
+var _user$project$Tiki_Style_Config$defaultSizeLarge = _user$project$Tiki_Style_Config$SizeConfig(
+	A2(_user$project$Tiki_Style_Config$multiplySides, _user$project$Tiki_Style_Config$defaultSizeNormal.padding, 1.2));
+var _user$project$Tiki_Style_Config$FontConfig = F3(
 	function (a, b, c) {
 		return {family: a, size: b, lineHeight: c};
 	});
-var _user$project$Tiki_Config$defaultFontSans = A3(
-	_user$project$Tiki_Config$FontConfig,
+var _user$project$Tiki_Style_Config$defaultFontSans = A3(
+	_user$project$Tiki_Style_Config$FontConfig,
 	{
 		ctor: '::',
 		_0: _mdgriffith$stylish_elephants$Element_Font$typeface('-apple-system'),
@@ -20625,9 +20625,9 @@ var _user$project$Tiki_Config$defaultFontSans = A3(
 	},
 	16,
 	1.4);
-var _user$project$Tiki_Config$defaultFontBase = _user$project$Tiki_Config$defaultFontSans;
-var _user$project$Tiki_Config$defaultFontSerif = A3(
-	_user$project$Tiki_Config$FontConfig,
+var _user$project$Tiki_Style_Config$defaultFontBase = _user$project$Tiki_Style_Config$defaultFontSans;
+var _user$project$Tiki_Style_Config$defaultFontSerif = A3(
+	_user$project$Tiki_Style_Config$FontConfig,
 	{
 		ctor: '::',
 		_0: _mdgriffith$stylish_elephants$Element_Font$typeface('Georgia'),
@@ -20647,8 +20647,8 @@ var _user$project$Tiki_Config$defaultFontSerif = A3(
 	},
 	16,
 	1.4);
-var _user$project$Tiki_Config$defaultFontMono = A3(
-	_user$project$Tiki_Config$FontConfig,
+var _user$project$Tiki_Style_Config$defaultFontMono = A3(
+	_user$project$Tiki_Style_Config$FontConfig,
 	{
 		ctor: '::',
 		_0: _mdgriffith$stylish_elephants$Element_Font$typeface('Menlo'),
@@ -20676,26 +20676,26 @@ var _user$project$Tiki_Config$defaultFontMono = A3(
 	},
 	16,
 	1.4);
-var _user$project$Tiki_Config$default = {
-	color: _user$project$Tiki_Config$defaultColor,
-	size: {small: _user$project$Tiki_Config$defaultSizeSmall, normal: _user$project$Tiki_Config$defaultSizeNormal, large: _user$project$Tiki_Config$defaultSizeLarge},
-	font: {sans: _user$project$Tiki_Config$defaultFontSans, serif: _user$project$Tiki_Config$defaultFontSerif, mono: _user$project$Tiki_Config$defaultFontMono, base: _user$project$Tiki_Config$defaultFontBase},
+var _user$project$Tiki_Style_Config$default = {
+	color: _user$project$Tiki_Style_Config$defaultColor,
+	size: {small: _user$project$Tiki_Style_Config$defaultSizeSmall, normal: _user$project$Tiki_Style_Config$defaultSizeNormal, large: _user$project$Tiki_Style_Config$defaultSizeLarge},
+	font: {sans: _user$project$Tiki_Style_Config$defaultFontSans, serif: _user$project$Tiki_Style_Config$defaultFontSerif, mono: _user$project$Tiki_Style_Config$defaultFontMono, base: _user$project$Tiki_Style_Config$defaultFontBase},
 	link: {},
 	heading: {},
-	decoration: _user$project$Tiki_Config$defaultDecoration
+	decoration: _user$project$Tiki_Style_Config$defaultDecoration
 };
-var _user$project$Tiki_Config$Config = F6(
+var _user$project$Tiki_Style_Config$Config = F6(
 	function (a, b, c, d, e, f) {
 		return {color: a, size: b, font: c, link: d, heading: e, decoration: f};
 	});
-var _user$project$Tiki_Styles$makeStyles = F2(
+var _user$project$Tiki$makeStyles = F2(
 	function (styles, makeEl) {
 		return function (_p0) {
 			return makeEl(
 				A2(_elm_lang$core$List$append, styles, _p0));
 		};
 	});
-var _user$project$Tiki_Styles$generate = function (_p1) {
+var _user$project$Tiki$generate = function (_p1) {
 	var _p2 = _p1;
 	var _p4 = _p2.decoration;
 	var _p3 = _p2.color;
@@ -20777,18 +20777,18 @@ var _user$project$Tiki_Styles$generate = function (_p1) {
 		}
 	};
 	return {
-		danger: _user$project$Tiki_Styles$makeStyles(danger),
-		warning: _user$project$Tiki_Styles$makeStyles(warning),
-		success: _user$project$Tiki_Styles$makeStyles(success),
-		primary: _user$project$Tiki_Styles$makeStyles(primary),
-		btn: _user$project$Tiki_Styles$makeStyles(btn)
+		danger: _user$project$Tiki$makeStyles(danger),
+		warning: _user$project$Tiki$makeStyles(warning),
+		success: _user$project$Tiki$makeStyles(success),
+		primary: _user$project$Tiki$makeStyles(primary),
+		btn: _user$project$Tiki$makeStyles(btn)
 	};
 };
-var _user$project$Tiki_Styles$Styles = F5(
+var _user$project$Tiki$Styles = F5(
 	function (a, b, c, d, e) {
 		return {danger: a, warning: b, success: c, primary: d, btn: e};
 	});
-var _user$project$Main$_p0 = _user$project$Tiki_Styles$generate(_user$project$Tiki_Config$default);
+var _user$project$Main$_p0 = _user$project$Tiki$generate(_user$project$Tiki_Style_Config$default);
 var _user$project$Main$btn = _user$project$Main$_p0.btn;
 var _user$project$Main$danger = _user$project$Main$_p0.danger;
 var _user$project$Main$warning = _user$project$Main$_p0.warning;

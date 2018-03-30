@@ -1,10 +1,11 @@
 import Element exposing (..)
 import Element.Input exposing (button)
 import Html exposing (Html)
-import Tiki.Config exposing (default)
-import Tiki.Styles as Styles
+import Tiki.Style.Config exposing (default)
+import Tiki as Tiki
 
-{ btn, danger, warning, primary, success } = Styles.generate default
+{ btn, danger, warning, primary, success } = Tiki.generate default
+
 
 main : Html msg
 main =

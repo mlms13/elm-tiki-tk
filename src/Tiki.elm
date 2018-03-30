@@ -1,10 +1,12 @@
-module Tiki.Styles exposing (..)
+module Tiki exposing
+  ( generate
+  )
 
 import Element exposing (..)
 import Element.Background as Background
 import Element.Border as Border
 import Element.Font as Font
-import Tiki.Config exposing (Config)
+import Tiki.Style.Config exposing (Config)
 
 type alias MkElement msg el =
   List (Attribute msg) -> el -> Element msg
