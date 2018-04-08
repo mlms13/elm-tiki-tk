@@ -1,19 +1,13 @@
 import Element exposing (..)
-import Element.Input exposing (button)
 import Html exposing (Html)
-import Tiki.Style.Config exposing (default)
-import Tiki as Tiki
-
-{ btn, danger, warning, primary, success } = Tiki.generate default
-
+import Tiki.Component.Button exposing (..)
 
 main : Html msg
 main =
-  Element.layout [ ] <|
+  Element.layout [] <|
     row [ alignTop, padding 20, spacing 5 ]
-      [ (button |> btn |> danger) [ spacing 5 ] { onPress = Nothing, label = (text "Danger") }
-      , (button |> btn |> warning) [ spacing 5 ] { onPress = Nothing, label = (text "Warning") }
-      , (button |> btn |> success) [ spacing 5 ] { onPress = Nothing, label = (text "Success") }
-      , (button |> btn |> primary) [ spacing 5 ] { onPress = Nothing, label = (text "Primary") }
+      [ dangerBtn [] { onPress = Nothing, label = (text "Danger") }
+      , warningBtn [] { onPress = Nothing, label = (text "Warning") }
+      , successBtn [] { onPress = Nothing, label = (text "Success") }
+      , primaryBtn [] { onPress = Nothing, label = (text "Primary") }
       ]
-

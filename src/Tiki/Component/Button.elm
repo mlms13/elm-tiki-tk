@@ -1,9 +1,60 @@
-module Tiki.Button exposing (..)
+module Tiki.Component.Button exposing
+  ( btn
+  , dangerBtn
+  , warningBtn
+  , successBtn
+  , primaryBtn
+  )
 
-import Color exposing (red, lightGray)
-import Element.Input as Input
+import Element exposing (Attribute, Element)
+import Element.Input exposing (button)
+import Tiki exposing (Styles, generate)
+import Tiki.Style.Config exposing (default)
 
--- button : MkElement msg { onPress : Maybe msg, label : Element msg}
--- button = Input.button |> btn
+styles : Styles msg el
+styles = generate default
 
--- btnDanger = btn |> bgDanger |> textInverse
+btn :
+  List (Attribute msg)
+  ->
+    { onPress : Maybe msg
+    , label : Element msg
+    }
+  -> Element msg
+btn = button |> styles.btn
+
+dangerBtn :
+  List (Attribute msg)
+  ->
+    { onPress : Maybe msg
+    , label : Element msg
+    }
+  -> Element msg
+dangerBtn = btn |> styles.danger
+
+warningBtn :
+  List (Attribute msg)
+  ->
+    { onPress : Maybe msg
+    , label : Element msg
+    }
+  -> Element msg
+warningBtn = btn |> styles.warning
+
+successBtn :
+  List (Attribute msg)
+  ->
+    { onPress : Maybe msg
+    , label : Element msg
+    }
+  -> Element msg
+successBtn = btn |> styles.success
+
+primaryBtn :
+  List (Attribute msg)
+  ->
+    { onPress : Maybe msg
+    , label : Element msg
+    }
+  -> Element msg
+primaryBtn = btn |> styles.primary

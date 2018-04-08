@@ -1,5 +1,6 @@
 module Tiki exposing
-  ( generate
+  ( Styles
+  , generate
   )
 
 import Element exposing (..)
