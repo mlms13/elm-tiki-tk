@@ -10,4 +10,5 @@ main =
       , warningBtn [] { onPress = Nothing, label = (text "Warning") }
       , successBtn [] { onPress = Nothing, label = (text "Success") }
       , primaryBtn [] { onPress = Nothing, label = (text "Primary") }
+      , btn [] { onPress = Nothing, label = (text "Default") }
       ]

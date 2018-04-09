@@ -3,11 +3,13 @@ module Tiki exposing
   , generate
   )
 
+import Color exposing (Color)
+import Color.Manipulate exposing (darken, fadeOut)
 import Element exposing (..)
 import Element.Background as Background
 import Element.Border as Border
 import Element.Font as Font
-import Tiki.Style.Config exposing (Config)
+import Tiki.Style.Config exposing (Config, BoxShadow)
 
 type alias MkElement msg el =
   List (Attribute msg) -> el -> Element msg
@@ -31,42 +33,51 @@ makeStyles styles makeEl =
 generate : Config -> Styles msg el
 generate { color, size, font, decoration} =
   let
+
+    makeBtnVariant : Color -> Color -> List (Attribute msg)
+    makeBtnVariant bg fg =
+      [ Background.color bg
+      , Border.color bg
+      , Font.color fg
+      , mouseOver <|
+        [ Background.color <| darken 0.06 bg
+        , Border.color <| darken 0.06 bg
+        ]
+      , focused <|
+        [ Background.color <| darken 0.06 bg
+        , Border.color <| darken 0.06 bg
+        , Border.shadow <| BoxShadow (0.0, 0.0) 0.0 3.0 (fadeOut 0.5 bg)
+        ]
+      , mouseDown <|
+        [ Border.color <| darken 0.1 bg
+        -- , TODO: btn active box shadow
+        ]
+      ]
+
     btn =
       [ Border.width decoration.borderWidth
       , Border.solid
       , Border.rounded decoration.borderRadius
       , Border.shadow decoration.boxShadow
+      , Font.center
       -- , font weight (Font.bold vs Font.semibold, etc)
       -- , line-height
       , paddingEach size.normal.padding
-      , Font.center
       -- , user-select none
       -- , white-space nowrap
-      ]
+      ] ++ (makeBtnVariant color.default color.fg)
 
     danger =
-      [ Background.color color.danger
-      , Border.color color.danger
-      , Font.color color.fgInverse
-      ]
+      makeBtnVariant color.danger color.fgInverse
 
     warning =
-      [ Background.color color.warning
-      , Border.color color.warning
-      , Font.color color.fgInverse
-      ]
+      makeBtnVariant color.warning color.fgInverse
 
     success =
-      [ Background.color color.success
-      , Border.color color.success
-      , Font.color color.fgInverse
-      ]
+      makeBtnVariant color.success color.fgInverse
 
     primary =
-      [ Background.color color.primary
-      , Border.color color.primary
-      , Font.color color.fgInverse
-      ]
+      makeBtnVariant color.primary color.fgInverse
   in
   { danger = makeStyles danger
   , warning = makeStyles warning
