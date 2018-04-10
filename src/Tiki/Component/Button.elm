@@ -6,55 +6,21 @@ module Tiki.Component.Button exposing
   , primaryBtn
   )
 
-import Element exposing (Attribute, Element)
 import Element.Input exposing (button)
 import Tiki exposing (Styles, generate)
 import Tiki.Style.Config exposing (default)
 
-styles : Styles msg el
-styles = generate default
+-- TODO: figure out a useful place for this to live
+generateElements styles =
+  let
+    btn = styles.btn
+  in
+  { btn = button |> btn
+  , dangerBtn = button |> btn |> styles.danger
+  , warningBtn = button |> btn |> styles.warning
+  , successBtn = button |> btn |> styles.success
+  , primaryBtn = button |> btn |> styles.primary
+  }
 
-btn :
-  List (Attribute msg)
-  ->
-    { onPress : Maybe msg
-    , label : Element msg
-    }
-  -> Element msg
-btn = button |> styles.btn
-
-dangerBtn :
-  List (Attribute msg)
-  ->
-    { onPress : Maybe msg
-    , label : Element msg
-    }
-  -> Element msg
-dangerBtn = btn |> styles.danger
-
-warningBtn :
-  List (Attribute msg)
-  ->
-    { onPress : Maybe msg
-    , label : Element msg
-    }
-  -> Element msg
-warningBtn = btn |> styles.warning
-
-successBtn :
-  List (Attribute msg)
-  ->
-    { onPress : Maybe msg
-    , label : Element msg
-    }
-  -> Element msg
-successBtn = btn |> styles.success
-
-primaryBtn :
-  List (Attribute msg)
-  ->
-    { onPress : Maybe msg
-    , label : Element msg
-    }
-  -> Element msg
-primaryBtn = btn |> styles.primary
+{ btn, dangerBtn, warningBtn, successBtn, primaryBtn } =
+  generateElements <| generate default

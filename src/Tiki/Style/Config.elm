@@ -2,6 +2,7 @@ module Tiki.Style.Config exposing (..)
 
 import Color exposing (Color, rgb, rgba)
 import Element.Font exposing (Font, typeface, sansSerif, serif, monospace)
+import List.Nonempty exposing (Nonempty)
 
 type alias Sides =
   { top : Int, right : Int, bottom : Int, left : Int}
@@ -13,27 +14,38 @@ type alias BoxShadow =
   , color : Color
   }
 
-type alias ColorConfig =
-  -- TODO: maybe each of these should be a pair of colors, one for bg, one for
-  -- text. Then we could do away with fg/fginverse
-  { primary : Color
-  , info : Color
-  , success : Color
-  , warning : Color
-  , danger : Color
-  , default : Color
+type BackgroundColor
+  = Fill Color
+  | LinearGradient Float (Nonempty Color)
 
-  -- TODO: consider splitting colors into color.normal.danger vs
-  -- color.inverse.danger, where one can be used for light bg, vs dark
-  , fg : Color -- text color, default to black for light bg
-  , fgInverse : Color -- light color text on dark bg
+type alias ColorPair =
+  { bg : BackgroundColor
+  , fg : Color
   }
 
+type alias ColorConfig =
+  { primary : ColorPair
+  , info : ColorPair
+  , success : ColorPair
+  , warning : ColorPair
+  , danger : ColorPair
+  , default : ColorPair
+  }
+
+type BorderColor
+  = Custom Color
+  | Background
+  | Foreground
+
+type BorderConfig
+  = None
+  | Solid Int BorderColor
+
 type alias DecorationConfig =
-  { borderWidth : Int
-  , borderRadius : Int
+  { borderRadius : Int
   , boxShadow : BoxShadow
-  , boxShadowInset : BoxShadow
+  -- , boxShadowInset : BoxShadow
+  , border : BorderConfig
   }
 
 type alias SizeConfig =
@@ -78,14 +90,12 @@ type alias Config =
 
 defaultColor : ColorConfig
 defaultColor =
-  { primary = rgb 0x26 0x93 0xb3
-  , info = rgb 0x26 0x93 0xb3
-  , success = rgb 0x28 0xbd 0x35
-  , warning = rgb 0xe6 0x95 0x29
-  , danger = rgb 0xda 0x32 0x29
-  , default = rgb 0xee 0xee 0xee
-  , fg = rgb 0x22 0x22 0x22 -- text color, default to black for light bg
-  , fgInverse = rgb 0xff 0xff 0xff -- light color text on dark bg
+  { primary = ColorPair (Fill <| rgb 0x26 0x93 0xb3) (rgb 0xff 0xff 0xff)
+  , info = ColorPair (Fill <| rgb 0x26 0x93 0xb3) (rgb 0xff 0xff 0xff)
+  , success = ColorPair (Fill <| rgb 0x28 0xbd 0x35) (rgb 0xff 0xff 0xff)
+  , warning = ColorPair (Fill <| rgb 0xe6 0x95 0x29) (rgb 0xff 0xff 0xff)
+  , danger = ColorPair (Fill <| rgb 0xda 0x32 0x29) (rgb 0xff 0xff 0xff)
+  , default = ColorPair (Fill <| rgb 0xee 0xee 0xee) (rgb 0x22 0x22 0x22)
   }
 
 multiplySides : Sides -> Float -> Sides
@@ -155,10 +165,10 @@ defaultFontBase = defaultFontSans
 
 defaultDecoration : DecorationConfig
 defaultDecoration =
-  { borderWidth = 1
-  , borderRadius = 3
+  { borderRadius = 3
   , boxShadow = BoxShadow (1.0, 1.0) 0.0 0.0 (rgba 0 0 0 0.15)
-  , boxShadowInset = BoxShadow (0.0, 1.0) 2.0 0.0 (rgba 0 0 0 0.2)
+  -- , boxShadowInset = BoxShadow (0.0, 1.0) 2.0 0.0 (rgba 0 0 0 0.2)
+  , border = None
   }
 
 default : Config
