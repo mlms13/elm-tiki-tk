@@ -1,26 +1,20 @@
 module Tiki.Component.Button exposing
-  ( btn
+  ( builders
+  , elements
+  , btn
+  , defaultBtn
   , dangerBtn
   , warningBtn
   , successBtn
   , primaryBtn
   )
 
-import Element.Input exposing (button)
-import Tiki exposing (Styles, generate)
-import Tiki.Style.Config exposing (default)
+-- import Tiki exposing (Styles)
+import Tiki.Style.Config as Cfg
+import Tiki.Style.Internal.Button exposing (defaultConfig, generate)
 
--- TODO: figure out a useful place for this to live
-generateElements styles =
-  let
-    btn = styles.btn
-  in
-  { btn = button |> btn
-  , dangerBtn = button |> btn |> styles.danger
-  , warningBtn = button |> btn |> styles.warning
-  , successBtn = button |> btn |> styles.success
-  , primaryBtn = button |> btn |> styles.primary
-  }
+{ builders, elements } =
+  Cfg.default |> defaultConfig |> generate
 
-{ btn, dangerBtn, warningBtn, successBtn, primaryBtn } =
-  generateElements <| generate default
+-- { default, danger, warning, success, primary } = builders
+{ btn, defaultBtn, dangerBtn, warningBtn, successBtn, primaryBtn } = elements

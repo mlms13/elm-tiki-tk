@@ -22019,18 +22019,128 @@ var _mgold$elm_nonempty_list$List_Nonempty$unzip = function (_p97) {
 		_1: A2(_mgold$elm_nonempty_list$List_Nonempty$Nonempty, _p98._0._1, ys)
 	};
 };
-var _user$project$Tiki_Style_Config$defaultSizeNormal = {
+var _user$project$Tiki_Style_Config_BackgroundColor$toAttr = function (bg) {
+	var _p0 = bg;
+	if (_p0.ctor === 'Fill') {
+		return _mdgriffith$stylish_elephants$Element_Background$color(_p0._0);
+	} else {
+		return A2(
+			_mdgriffith$stylish_elephants$Element_Background$gradient,
+			_p0._0,
+			_mgold$elm_nonempty_list$List_Nonempty$toList(_p0._1));
+	}
+};
+var _user$project$Tiki_Style_Config_BackgroundColor$extractColor = function (bg) {
+	var _p1 = bg;
+	if (_p1.ctor === 'Fill') {
+		return _p1._0;
+	} else {
+		return _p1._1._0;
+	}
+};
+var _user$project$Tiki_Style_Config_BackgroundColor$LinearGradient = F2(
+	function (a, b) {
+		return {ctor: 'LinearGradient', _0: a, _1: b};
+	});
+var _user$project$Tiki_Style_Config_BackgroundColor$Fill = function (a) {
+	return {ctor: 'Fill', _0: a};
+};
+var _user$project$Tiki_Style_Config_BackgroundColor$darkenBg = F2(
+	function (amt, bg) {
+		var _p2 = bg;
+		if (_p2.ctor === 'Fill') {
+			return _user$project$Tiki_Style_Config_BackgroundColor$Fill(
+				A2(_eskimoblood$elm_color_extra$Color_Manipulate$darken, amt, _p2._0));
+		} else {
+			return A2(
+				_user$project$Tiki_Style_Config_BackgroundColor$LinearGradient,
+				_p2._0,
+				A2(
+					_mgold$elm_nonempty_list$List_Nonempty$map,
+					_eskimoblood$elm_color_extra$Color_Manipulate$darken(amt),
+					_p2._1));
+		}
+	});
+var _user$project$Tiki_Style_Config_ColorConfig$ColorPair = F2(
+	function (a, b) {
+		return {bg: a, fg: b};
+	});
+var _user$project$Tiki_Style_Config_ColorConfig$default = {
+	primary: A2(
+		_user$project$Tiki_Style_Config_ColorConfig$ColorPair,
+		_user$project$Tiki_Style_Config_BackgroundColor$Fill(
+			A3(_elm_lang$core$Color$rgb, 38, 147, 179)),
+		A3(_elm_lang$core$Color$rgb, 255, 255, 255)),
+	info: A2(
+		_user$project$Tiki_Style_Config_ColorConfig$ColorPair,
+		_user$project$Tiki_Style_Config_BackgroundColor$Fill(
+			A3(_elm_lang$core$Color$rgb, 38, 147, 179)),
+		A3(_elm_lang$core$Color$rgb, 255, 255, 255)),
+	success: A2(
+		_user$project$Tiki_Style_Config_ColorConfig$ColorPair,
+		_user$project$Tiki_Style_Config_BackgroundColor$Fill(
+			A3(_elm_lang$core$Color$rgb, 40, 189, 53)),
+		A3(_elm_lang$core$Color$rgb, 255, 255, 255)),
+	warning: A2(
+		_user$project$Tiki_Style_Config_ColorConfig$ColorPair,
+		_user$project$Tiki_Style_Config_BackgroundColor$Fill(
+			A3(_elm_lang$core$Color$rgb, 230, 149, 41)),
+		A3(_elm_lang$core$Color$rgb, 255, 255, 255)),
+	danger: A2(
+		_user$project$Tiki_Style_Config_ColorConfig$ColorPair,
+		_user$project$Tiki_Style_Config_BackgroundColor$Fill(
+			A3(_elm_lang$core$Color$rgb, 218, 50, 41)),
+		A3(_elm_lang$core$Color$rgb, 255, 255, 255)),
+	$default: A2(
+		_user$project$Tiki_Style_Config_ColorConfig$ColorPair,
+		_user$project$Tiki_Style_Config_BackgroundColor$Fill(
+			A3(_elm_lang$core$Color$rgb, 238, 238, 238)),
+		A3(_elm_lang$core$Color$rgb, 34, 34, 34))
+};
+var _user$project$Tiki_Style_Config_ColorConfig$ColorConfig = F6(
+	function (a, b, c, d, e, f) {
+		return {primary: a, info: b, success: c, warning: d, danger: e, $default: f};
+	});
+var _user$project$Tiki_Style_Config_DecorationConfig$BoxShadow = F4(
+	function (a, b, c, d) {
+		return {offset: a, blur: b, size: c, color: d};
+	});
+var _user$project$Tiki_Style_Config_DecorationConfig$DecorationConfig = F3(
+	function (a, b, c) {
+		return {borderRadius: a, boxShadow: b, border: c};
+	});
+var _user$project$Tiki_Style_Config_DecorationConfig$Foreground = {ctor: 'Foreground'};
+var _user$project$Tiki_Style_Config_DecorationConfig$Background = {ctor: 'Background'};
+var _user$project$Tiki_Style_Config_DecorationConfig$Custom = function (a) {
+	return {ctor: 'Custom', _0: a};
+};
+var _user$project$Tiki_Style_Config_DecorationConfig$Solid = F2(
+	function (a, b) {
+		return {ctor: 'Solid', _0: a, _1: b};
+	});
+var _user$project$Tiki_Style_Config_DecorationConfig$None = {ctor: 'None'};
+var _user$project$Tiki_Style_Config_DecorationConfig$default = {
+	borderRadius: 3,
+	boxShadow: A4(
+		_user$project$Tiki_Style_Config_DecorationConfig$BoxShadow,
+		{ctor: '_Tuple2', _0: 1.0, _1: 1.0},
+		0.0,
+		0.0,
+		A4(_elm_lang$core$Color$rgba, 0, 0, 0, 0.15)),
+	border: _user$project$Tiki_Style_Config_DecorationConfig$None
+};
+var _user$project$Tiki_Style_Config_SizeConfig$defaultSizeNormal = {
 	padding: {top: 8, left: 16, bottom: 8, right: 16}
 };
-var _user$project$Tiki_Style_Config$Sides = F4(
+var _user$project$Tiki_Style_Config_SizeConfig$Sides = F4(
 	function (a, b, c, d) {
 		return {top: a, right: b, bottom: c, left: d};
 	});
-var _user$project$Tiki_Style_Config$multiplySides = F2(
+var _user$project$Tiki_Style_Config_SizeConfig$multiplySides = F2(
 	function (_p0, mult) {
 		var _p1 = _p0;
 		return A4(
-			_user$project$Tiki_Style_Config$Sides,
+			_user$project$Tiki_Style_Config_SizeConfig$Sides,
 			_elm_lang$core$Basics$round(
 				_elm_lang$core$Basics$toFloat(_p1.top) * mult),
 			_elm_lang$core$Basics$round(
@@ -22040,29 +22150,18 @@ var _user$project$Tiki_Style_Config$multiplySides = F2(
 			_elm_lang$core$Basics$round(
 				_elm_lang$core$Basics$toFloat(_p1.left) * mult));
 	});
-var _user$project$Tiki_Style_Config$BoxShadow = F4(
-	function (a, b, c, d) {
-		return {offset: a, blur: b, size: c, color: d};
-	});
-var _user$project$Tiki_Style_Config$ColorPair = F2(
-	function (a, b) {
-		return {bg: a, fg: b};
-	});
-var _user$project$Tiki_Style_Config$ColorConfig = F6(
-	function (a, b, c, d, e, f) {
-		return {primary: a, info: b, success: c, warning: d, danger: e, $default: f};
-	});
-var _user$project$Tiki_Style_Config$DecorationConfig = F3(
-	function (a, b, c) {
-		return {borderRadius: a, boxShadow: b, border: c};
-	});
-var _user$project$Tiki_Style_Config$SizeConfig = function (a) {
+var _user$project$Tiki_Style_Config_SizeConfig$SizeConfig = function (a) {
 	return {padding: a};
 };
-var _user$project$Tiki_Style_Config$defaultSizeSmall = _user$project$Tiki_Style_Config$SizeConfig(
-	A2(_user$project$Tiki_Style_Config$multiplySides, _user$project$Tiki_Style_Config$defaultSizeNormal.padding, 0.9));
-var _user$project$Tiki_Style_Config$defaultSizeLarge = _user$project$Tiki_Style_Config$SizeConfig(
-	A2(_user$project$Tiki_Style_Config$multiplySides, _user$project$Tiki_Style_Config$defaultSizeNormal.padding, 1.2));
+var _user$project$Tiki_Style_Config_SizeConfig$defaultSizeSmall = _user$project$Tiki_Style_Config_SizeConfig$SizeConfig(
+	A2(_user$project$Tiki_Style_Config_SizeConfig$multiplySides, _user$project$Tiki_Style_Config_SizeConfig$defaultSizeNormal.padding, 0.9));
+var _user$project$Tiki_Style_Config_SizeConfig$defaultSizeLarge = _user$project$Tiki_Style_Config_SizeConfig$SizeConfig(
+	A2(_user$project$Tiki_Style_Config_SizeConfig$multiplySides, _user$project$Tiki_Style_Config_SizeConfig$defaultSizeNormal.padding, 1.2));
+var _user$project$Tiki_Style_Config_SizeConfig$default = {small: _user$project$Tiki_Style_Config_SizeConfig$defaultSizeSmall, normal: _user$project$Tiki_Style_Config_SizeConfig$defaultSizeNormal, large: _user$project$Tiki_Style_Config_SizeConfig$defaultSizeLarge};
+var _user$project$Tiki_Style_Config_SizeConfig$AllSizeConfig = F3(
+	function (a, b, c) {
+		return {small: a, normal: b, large: c};
+	});
 var _user$project$Tiki_Style_Config$FontConfig = F3(
 	function (a, b, c) {
 		return {family: a, size: b, lineHeight: c};
@@ -22171,291 +22270,168 @@ var _user$project$Tiki_Style_Config$defaultFontMono = A3(
 	},
 	16,
 	1.4);
+var _user$project$Tiki_Style_Config$default = {
+	color: _user$project$Tiki_Style_Config_ColorConfig$default,
+	size: _user$project$Tiki_Style_Config_SizeConfig$default,
+	font: {sans: _user$project$Tiki_Style_Config$defaultFontSans, serif: _user$project$Tiki_Style_Config$defaultFontSerif, mono: _user$project$Tiki_Style_Config$defaultFontMono, base: _user$project$Tiki_Style_Config$defaultFontBase},
+	link: {},
+	heading: {},
+	decoration: _user$project$Tiki_Style_Config_DecorationConfig$default
+};
 var _user$project$Tiki_Style_Config$Config = F6(
 	function (a, b, c, d, e, f) {
 		return {color: a, size: b, font: c, link: d, heading: e, decoration: f};
 	});
-var _user$project$Tiki_Style_Config$LinearGradient = F2(
-	function (a, b) {
-		return {ctor: 'LinearGradient', _0: a, _1: b};
-	});
-var _user$project$Tiki_Style_Config$Fill = function (a) {
-	return {ctor: 'Fill', _0: a};
-};
-var _user$project$Tiki_Style_Config$defaultColor = {
-	primary: A2(
-		_user$project$Tiki_Style_Config$ColorPair,
-		_user$project$Tiki_Style_Config$Fill(
-			A3(_elm_lang$core$Color$rgb, 38, 147, 179)),
-		A3(_elm_lang$core$Color$rgb, 255, 255, 255)),
-	info: A2(
-		_user$project$Tiki_Style_Config$ColorPair,
-		_user$project$Tiki_Style_Config$Fill(
-			A3(_elm_lang$core$Color$rgb, 38, 147, 179)),
-		A3(_elm_lang$core$Color$rgb, 255, 255, 255)),
-	success: A2(
-		_user$project$Tiki_Style_Config$ColorPair,
-		_user$project$Tiki_Style_Config$Fill(
-			A3(_elm_lang$core$Color$rgb, 40, 189, 53)),
-		A3(_elm_lang$core$Color$rgb, 255, 255, 255)),
-	warning: A2(
-		_user$project$Tiki_Style_Config$ColorPair,
-		_user$project$Tiki_Style_Config$Fill(
-			A3(_elm_lang$core$Color$rgb, 230, 149, 41)),
-		A3(_elm_lang$core$Color$rgb, 255, 255, 255)),
-	danger: A2(
-		_user$project$Tiki_Style_Config$ColorPair,
-		_user$project$Tiki_Style_Config$Fill(
-			A3(_elm_lang$core$Color$rgb, 218, 50, 41)),
-		A3(_elm_lang$core$Color$rgb, 255, 255, 255)),
-	$default: A2(
-		_user$project$Tiki_Style_Config$ColorPair,
-		_user$project$Tiki_Style_Config$Fill(
-			A3(_elm_lang$core$Color$rgb, 238, 238, 238)),
-		A3(_elm_lang$core$Color$rgb, 34, 34, 34))
-};
-var _user$project$Tiki_Style_Config$Foreground = {ctor: 'Foreground'};
-var _user$project$Tiki_Style_Config$Background = {ctor: 'Background'};
-var _user$project$Tiki_Style_Config$Custom = function (a) {
-	return {ctor: 'Custom', _0: a};
-};
-var _user$project$Tiki_Style_Config$Solid = F2(
-	function (a, b) {
-		return {ctor: 'Solid', _0: a, _1: b};
-	});
-var _user$project$Tiki_Style_Config$None = {ctor: 'None'};
-var _user$project$Tiki_Style_Config$defaultDecoration = {
-	borderRadius: 3,
-	boxShadow: A4(
-		_user$project$Tiki_Style_Config$BoxShadow,
-		{ctor: '_Tuple2', _0: 1.0, _1: 1.0},
-		0.0,
-		0.0,
-		A4(_elm_lang$core$Color$rgba, 0, 0, 0, 0.15)),
-	border: _user$project$Tiki_Style_Config$None
-};
-var _user$project$Tiki_Style_Config$default = {
-	color: _user$project$Tiki_Style_Config$defaultColor,
-	size: {small: _user$project$Tiki_Style_Config$defaultSizeSmall, normal: _user$project$Tiki_Style_Config$defaultSizeNormal, large: _user$project$Tiki_Style_Config$defaultSizeLarge},
-	font: {sans: _user$project$Tiki_Style_Config$defaultFontSans, serif: _user$project$Tiki_Style_Config$defaultFontSerif, mono: _user$project$Tiki_Style_Config$defaultFontMono, base: _user$project$Tiki_Style_Config$defaultFontBase},
-	link: {},
-	heading: {},
-	decoration: _user$project$Tiki_Style_Config$defaultDecoration
-};
-var _user$project$Tiki$makeStyles = F2(
+var _user$project$Tiki_Style_Internal_Common$applyStyles = F2(
 	function (styles, makeEl) {
 		return function (_p0) {
 			return makeEl(
 				A2(_elm_lang$core$List$append, styles, _p0));
 		};
 	});
-var _user$project$Tiki$generate = function (_p1) {
-	var _p2 = _p1;
-	var _p13 = _p2.decoration;
-	var _p12 = _p2.color;
-	var extractBgColor = function (bg) {
-		var _p3 = bg;
-		if (_p3.ctor === 'Fill') {
-			return _p3._0;
-		} else {
-			return _p3._1._0;
-		}
-	};
-	var borderAttr = F2(
-		function (_p4, border) {
-			var _p5 = _p4;
-			var make = F2(
-				function (w, c) {
-					return {
-						ctor: '::',
-						_0: _mdgriffith$stylish_elephants$Element_Border$width(w),
-						_1: {
-							ctor: '::',
-							_0: _mdgriffith$stylish_elephants$Element_Border$solid,
-							_1: {
-								ctor: '::',
-								_0: _mdgriffith$stylish_elephants$Element_Border$color(c),
-								_1: {ctor: '[]'}
-							}
-						}
-					};
-				});
-			var _p6 = border;
-			if (_p6.ctor === 'None') {
-				return {ctor: '[]'};
-			} else {
-				switch (_p6._1.ctor) {
-					case 'Custom':
-						return A2(make, _p6._0, _p6._1._0);
-					case 'Foreground':
-						return A2(make, _p6._0, _p5.fg);
-					default:
-						return A2(
-							make,
-							_p6._0,
-							extractBgColor(_p5.bg));
-				}
-			}
-		});
-	var bgColorToAttr = function (bg) {
-		var _p7 = bg;
-		if (_p7.ctor === 'Fill') {
-			return _mdgriffith$stylish_elephants$Element_Background$color(_p7._0);
-		} else {
-			return A2(
-				_mdgriffith$stylish_elephants$Element_Background$gradient,
-				_p7._0,
-				_mgold$elm_nonempty_list$List_Nonempty$toList(_p7._1));
-		}
-	};
-	var makeBtnVariant = function (_p8) {
-		var _p9 = _p8;
-		var _p11 = _p9.fg;
-		var _p10 = _p9.bg;
-		return A2(
-			_elm_lang$core$Basics_ops['++'],
-			{
-				ctor: '::',
-				_0: bgColorToAttr(_p10),
-				_1: {ctor: '[]'}
-			},
-			A2(
-				_elm_lang$core$Basics_ops['++'],
-				A2(
-					borderAttr,
-					A2(_user$project$Tiki_Style_Config$ColorPair, _p10, _p11),
-					_p13.border),
-				{
-					ctor: '::',
-					_0: _mdgriffith$stylish_elephants$Element_Font$color(_p11),
-					_1: {
-						ctor: '::',
-						_0: _mdgriffith$stylish_elephants$Element$mouseOver(
-							{
-								ctor: '::',
-								_0: _mdgriffith$stylish_elephants$Element_Background$color(
-									A2(
-										_eskimoblood$elm_color_extra$Color_Manipulate$darken,
-										6.0e-2,
-										extractBgColor(_p10))),
-								_1: {
-									ctor: '::',
-									_0: _mdgriffith$stylish_elephants$Element_Border$color(
-										A2(
-											_eskimoblood$elm_color_extra$Color_Manipulate$darken,
-											6.0e-2,
-											extractBgColor(_p10))),
-									_1: {ctor: '[]'}
-								}
-							}),
-						_1: {
-							ctor: '::',
-							_0: _mdgriffith$stylish_elephants$Element$focused(
-								{
-									ctor: '::',
-									_0: _mdgriffith$stylish_elephants$Element_Background$color(
-										A2(
-											_eskimoblood$elm_color_extra$Color_Manipulate$darken,
-											6.0e-2,
-											extractBgColor(_p10))),
-									_1: {
-										ctor: '::',
-										_0: _mdgriffith$stylish_elephants$Element_Border$color(
-											A2(
-												_eskimoblood$elm_color_extra$Color_Manipulate$darken,
-												6.0e-2,
-												extractBgColor(_p10))),
-										_1: {
-											ctor: '::',
-											_0: _mdgriffith$stylish_elephants$Element_Border$shadow(
-												A4(
-													_user$project$Tiki_Style_Config$BoxShadow,
-													{ctor: '_Tuple2', _0: 0.0, _1: 0.0},
-													0.0,
-													3.0,
-													A2(
-														_eskimoblood$elm_color_extra$Color_Manipulate$fadeOut,
-														0.5,
-														extractBgColor(_p10)))),
-											_1: {ctor: '[]'}
-										}
-									}
-								}),
-							_1: {
-								ctor: '::',
-								_0: _mdgriffith$stylish_elephants$Element$mouseDown(
-									{
-										ctor: '::',
-										_0: _mdgriffith$stylish_elephants$Element_Border$color(
-											A2(
-												_eskimoblood$elm_color_extra$Color_Manipulate$darken,
-												0.1,
-												extractBgColor(_p10))),
-										_1: {ctor: '[]'}
-									}),
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}));
-	};
-	var btn = A2(
+var _user$project$Tiki_Style_Internal_Button$makeVariant = function (_p0) {
+	var _p1 = _p0;
+	var _p2 = _p1.bg;
+	return A2(
 		_elm_lang$core$Basics_ops['++'],
 		{
 			ctor: '::',
-			_0: _mdgriffith$stylish_elephants$Element_Border$rounded(_p13.borderRadius),
+			_0: _user$project$Tiki_Style_Config_BackgroundColor$toAttr(_p2),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: _mdgriffith$stylish_elephants$Element_Font$color(_p1.fg),
 			_1: {
 				ctor: '::',
-				_0: _mdgriffith$stylish_elephants$Element_Border$shadow(_p13.boxShadow),
+				_0: _mdgriffith$stylish_elephants$Element$mouseOver(
+					{
+						ctor: '::',
+						_0: _user$project$Tiki_Style_Config_BackgroundColor$toAttr(
+							A2(_user$project$Tiki_Style_Config_BackgroundColor$darkenBg, 6.0e-2, _p2)),
+						_1: {
+							ctor: '::',
+							_0: _mdgriffith$stylish_elephants$Element_Border$color(
+								A2(
+									_eskimoblood$elm_color_extra$Color_Manipulate$darken,
+									6.0e-2,
+									_user$project$Tiki_Style_Config_BackgroundColor$extractColor(_p2))),
+							_1: {ctor: '[]'}
+						}
+					}),
 				_1: {
 					ctor: '::',
-					_0: _mdgriffith$stylish_elephants$Element_Font$center,
+					_0: _mdgriffith$stylish_elephants$Element$focused(
+						{
+							ctor: '::',
+							_0: _user$project$Tiki_Style_Config_BackgroundColor$toAttr(
+								A2(_user$project$Tiki_Style_Config_BackgroundColor$darkenBg, 6.0e-2, _p2)),
+							_1: {
+								ctor: '::',
+								_0: _mdgriffith$stylish_elephants$Element_Border$color(
+									A2(
+										_eskimoblood$elm_color_extra$Color_Manipulate$darken,
+										6.0e-2,
+										_user$project$Tiki_Style_Config_BackgroundColor$extractColor(_p2))),
+								_1: {
+									ctor: '::',
+									_0: _mdgriffith$stylish_elephants$Element_Border$shadow(
+										A4(
+											_user$project$Tiki_Style_Config_DecorationConfig$BoxShadow,
+											{ctor: '_Tuple2', _0: 0.0, _1: 0.0},
+											0.0,
+											3.0,
+											A2(
+												_eskimoblood$elm_color_extra$Color_Manipulate$fadeOut,
+												0.5,
+												_user$project$Tiki_Style_Config_BackgroundColor$extractColor(_p2)))),
+									_1: {ctor: '[]'}
+								}
+							}
+						}),
 					_1: {
 						ctor: '::',
-						_0: _mdgriffith$stylish_elephants$Element$paddingEach(_p2.size.normal.padding),
+						_0: _mdgriffith$stylish_elephants$Element$mouseDown(
+							{
+								ctor: '::',
+								_0: _mdgriffith$stylish_elephants$Element_Border$color(
+									A2(
+										_eskimoblood$elm_color_extra$Color_Manipulate$darken,
+										0.1,
+										_user$project$Tiki_Style_Config_BackgroundColor$extractColor(_p2))),
+								_1: {ctor: '[]'}
+							}),
 						_1: {ctor: '[]'}
 					}
 				}
 			}
-		},
-		makeBtnVariant(_p12.$default));
-	var danger = makeBtnVariant(_p12.danger);
-	var warning = makeBtnVariant(_p12.warning);
-	var success = makeBtnVariant(_p12.success);
-	var primary = makeBtnVariant(_p12.primary);
+		});
+};
+var _user$project$Tiki_Style_Internal_Button$generate = function (cfg) {
+	var builders = {
+		danger: _user$project$Tiki_Style_Internal_Common$applyStyles(
+			_user$project$Tiki_Style_Internal_Button$makeVariant(cfg.color.danger)),
+		warning: _user$project$Tiki_Style_Internal_Common$applyStyles(
+			_user$project$Tiki_Style_Internal_Button$makeVariant(cfg.color.warning)),
+		success: _user$project$Tiki_Style_Internal_Common$applyStyles(
+			_user$project$Tiki_Style_Internal_Button$makeVariant(cfg.color.success)),
+		primary: _user$project$Tiki_Style_Internal_Common$applyStyles(
+			_user$project$Tiki_Style_Internal_Button$makeVariant(cfg.color.primary)),
+		$default: _user$project$Tiki_Style_Internal_Common$applyStyles(
+			_user$project$Tiki_Style_Internal_Button$makeVariant(cfg.color.$default))
+	};
+	var btnStyle = {
+		ctor: '::',
+		_0: _mdgriffith$stylish_elephants$Element_Border$rounded(cfg.borderRadius),
+		_1: {
+			ctor: '::',
+			_0: _mdgriffith$stylish_elephants$Element_Border$shadow(cfg.boxShadow),
+			_1: {
+				ctor: '::',
+				_0: _mdgriffith$stylish_elephants$Element_Font$center,
+				_1: {
+					ctor: '::',
+					_0: _mdgriffith$stylish_elephants$Element$paddingEach(cfg.size.normal.padding),
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	};
+	var btn = A2(_user$project$Tiki_Style_Internal_Common$applyStyles, btnStyle, _mdgriffith$stylish_elephants$Element_Input$button);
 	return {
-		danger: _user$project$Tiki$makeStyles(danger),
-		warning: _user$project$Tiki$makeStyles(warning),
-		success: _user$project$Tiki$makeStyles(success),
-		primary: _user$project$Tiki$makeStyles(primary),
-		btn: _user$project$Tiki$makeStyles(btn)
+		builders: builders,
+		elements: {
+			btn: btn,
+			defaultBtn: builders.$default(btn),
+			dangerBtn: builders.danger(btn),
+			warningBtn: builders.warning(btn),
+			successBtn: builders.success(btn),
+			primaryBtn: builders.primary(btn)
+		}
 	};
 };
-var _user$project$Tiki$Styles = F5(
-	function (a, b, c, d, e) {
-		return {danger: a, warning: b, success: c, primary: d, btn: e};
+var _user$project$Tiki_Style_Internal_Button$defaultConfig = function (cfg) {
+	return {borderRadius: cfg.decoration.borderRadius, boxShadow: cfg.decoration.boxShadow, color: cfg.color, size: cfg.size};
+};
+var _user$project$Tiki_Style_Internal_Button$ButtonConfig = F4(
+	function (a, b, c, d) {
+		return {borderRadius: a, boxShadow: b, color: c, size: d};
 	});
-var _user$project$Tiki_Component_Button$generateElements = function (styles) {
-	var btn = styles.btn;
-	return {
-		btn: btn(_mdgriffith$stylish_elephants$Element_Input$button),
-		dangerBtn: styles.danger(
-			btn(_mdgriffith$stylish_elephants$Element_Input$button)),
-		warningBtn: styles.warning(
-			btn(_mdgriffith$stylish_elephants$Element_Input$button)),
-		successBtn: styles.success(
-			btn(_mdgriffith$stylish_elephants$Element_Input$button)),
-		primaryBtn: styles.primary(
-			btn(_mdgriffith$stylish_elephants$Element_Input$button))
-	};
-};
-var _user$project$Tiki_Component_Button$_p0 = _user$project$Tiki_Component_Button$generateElements(
-	_user$project$Tiki$generate(_user$project$Tiki_Style_Config$default));
-var _user$project$Tiki_Component_Button$btn = _user$project$Tiki_Component_Button$_p0.btn;
-var _user$project$Tiki_Component_Button$dangerBtn = _user$project$Tiki_Component_Button$_p0.dangerBtn;
-var _user$project$Tiki_Component_Button$warningBtn = _user$project$Tiki_Component_Button$_p0.warningBtn;
-var _user$project$Tiki_Component_Button$successBtn = _user$project$Tiki_Component_Button$_p0.successBtn;
-var _user$project$Tiki_Component_Button$primaryBtn = _user$project$Tiki_Component_Button$_p0.primaryBtn;
+var _user$project$Tiki_Style_Internal_Button$ButtonStyle = F2(
+	function (a, b) {
+		return {builders: a, elements: b};
+	});
+var _user$project$Tiki_Component_Button$_p0 = _user$project$Tiki_Style_Internal_Button$generate(
+	_user$project$Tiki_Style_Internal_Button$defaultConfig(_user$project$Tiki_Style_Config$default));
+var _user$project$Tiki_Component_Button$builders = _user$project$Tiki_Component_Button$_p0.builders;
+var _user$project$Tiki_Component_Button$elements = _user$project$Tiki_Component_Button$_p0.elements;
+var _user$project$Tiki_Component_Button$_p1 = _user$project$Tiki_Component_Button$elements;
+var _user$project$Tiki_Component_Button$btn = _user$project$Tiki_Component_Button$_p1.btn;
+var _user$project$Tiki_Component_Button$defaultBtn = _user$project$Tiki_Component_Button$_p1.defaultBtn;
+var _user$project$Tiki_Component_Button$dangerBtn = _user$project$Tiki_Component_Button$_p1.dangerBtn;
+var _user$project$Tiki_Component_Button$warningBtn = _user$project$Tiki_Component_Button$_p1.warningBtn;
+var _user$project$Tiki_Component_Button$successBtn = _user$project$Tiki_Component_Button$_p1.successBtn;
+var _user$project$Tiki_Component_Button$primaryBtn = _user$project$Tiki_Component_Button$_p1.primaryBtn;
 var _user$project$Main$main = _elm_lang$virtual_dom$Native_VirtualDom.staticProgram(
 	A2(
 		_mdgriffith$stylish_elephants$Element$layout,
