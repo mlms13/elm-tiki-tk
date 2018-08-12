@@ -1,101 +1,108 @@
 module Tiki.Style.Internal.Button exposing
-  ( ButtonConfig
-  , ButtonStyle
-  , defaultConfig
+  ( StyleConfig
+  , ButtonElements
+  , config
   , generate
   )
 
-import Color.Manipulate exposing (darken, fadeOut)
 import Element exposing (Attribute, Element, focused, mouseOver, mouseDown, paddingEach)
 import Element.Border as Border
-import Element.Font as Font
+import Element.Font exposing (center)
 import Element.Input as ElInpt
 import Tiki.Style.Config exposing (Config)
-import Tiki.Style.Config.BackgroundColor as BgColor
-import Tiki.Style.Config.ColorConfig exposing (ColorConfig, ColorPair)
-import Tiki.Style.Config.DecorationConfig exposing (BoxShadow)
+import Tiki.Style.Config.ColorConfig exposing (ColorConfig, ColorPair, bgToAttr, fgToAttr)
+import Tiki.Style.Config.DecorationConfig exposing (ShadowConfig)
 import Tiki.Style.Config.SizeConfig exposing (AllSizeConfig)
-import Tiki.Style.Internal.Common exposing (MkElement, applyStyles)
+import Tiki.Style.Internal.Common exposing (MakeElement, applyStyles)
 
-type alias ButtonConfig =
+type alias StyleConfig =
   { borderRadius : Int
-  , boxShadow : BoxShadow
+  , shadow : ShadowConfig
   , color : ColorConfig
   , size : AllSizeConfig
   }
 
-type alias ButtonStyle msg el =
+type alias ButtonProps msg =
+  { label : Element msg
+  , onPress : Maybe msg
+  }
+
+type alias MakeButton msg =
+  MakeElement msg (ButtonProps msg)
+
+-- "builders" take any element and apply button styling to it while "elements"
+-- are specifically functions that produce Style Element buttons
+type alias ButtonElements msg el =
   { builders :
-    { danger : MkElement msg el -> MkElement msg el
-    , warning : MkElement msg el -> MkElement msg el
-    , success : MkElement msg el -> MkElement msg el
-    , primary : MkElement msg el -> MkElement msg el
-    , default : MkElement msg el -> MkElement msg el
+    { danger : MakeElement msg el -> MakeElement msg el
+    , warning : MakeElement msg el -> MakeElement msg el
+    , success : MakeElement msg el -> MakeElement msg el
+    , primary : MakeElement msg el -> MakeElement msg el
+    , default : MakeElement msg el -> MakeElement msg el
     }
   , elements :
-    { btn : List (Attribute msg) -> { onPress : Maybe msg, label : Element msg } -> Element msg
-    , defaultBtn : List (Attribute msg) -> { onPress : Maybe msg, label : Element msg } -> Element msg
-    , dangerBtn : List (Attribute msg) -> { onPress : Maybe msg, label : Element msg } -> Element msg
-    , warningBtn : List (Attribute msg) -> { onPress : Maybe msg, label : Element msg } -> Element msg
-    , successBtn : List (Attribute msg) -> { onPress : Maybe msg, label : Element msg } -> Element msg
-    , primaryBtn : List (Attribute msg) -> { onPress : Maybe msg, label : Element msg } -> Element msg
+    { btn : MakeButton msg
+    , defaultBtn : MakeButton msg
+    , dangerBtn : MakeButton msg
+    , warningBtn : MakeButton msg
+    , successBtn : MakeButton msg
+    , primaryBtn : MakeButton msg
     }
   }
 
-defaultConfig : Config -> ButtonConfig
-defaultConfig cfg =
-  { borderRadius = cfg.decoration.borderRadius
-  , boxShadow = cfg.decoration.boxShadow
-  , color = cfg.color
-  , size = cfg.size
+config : Config -> StyleConfig
+config { decoration, color, size } =
+  { borderRadius = decoration.borderRadius
+  , shadow = decoration.shadow
+  , color = color
+  , size = size
   }
 
 makeVariant : ColorPair -> List (Attribute msg)
 makeVariant { bg, fg } =
-  [BgColor.toAttr bg] ++
+  [bgToAttr bg] ++
 
   -- borderAttr (ColorPair bg fg) decoration.border ++
-  [ Font.color fg
-  , mouseOver <|
-    [ BgColor.toAttr <| BgColor.darkenBg 0.06 bg
-    , Border.color <| darken 0.06 (BgColor.extractColor bg)
-    ]
-  , focused <|
-    [ BgColor.toAttr <| BgColor.darkenBg 0.06 bg
-    , Border.color <| darken 0.06 (BgColor.extractColor bg)
-    , Border.shadow <| BoxShadow (0.0, 0.0) 0.0 3.0 (fadeOut 0.5 (BgColor.extractColor bg))
-    ]
+  [ fgToAttr fg
+  -- , mouseOver <|
+  --   [ BgColor.toAttr <| BgColor.darkenBg 0.06 bg
+  --   ]
+  -- , focused <|
+  --   [ BgColor.toAttr <| BgColor.darkenBg 0.06 bg
+  --   , Border.shadow <| ShadowConfig (0.0, 0.0) 0.0 3.0 (fadeOut 0.5 (BgColor.extractColor bg))
+  --   ]
   , mouseDown <|
-    [ Border.color <| darken 0.1 (BgColor.extractColor bg)
-    -- , TODO: btn active box shadow
+    [ -- TODO: btn active box shadow
     ]
   ]
 
-generate : ButtonConfig -> ButtonStyle msg el
-generate cfg =
+generate : StyleConfig -> ButtonElements msg el
+generate { borderRadius, shadow, color, size } =
   let
     btnStyle =
-      [ Border.rounded cfg.borderRadius
-      , Border.shadow cfg.boxShadow
-      , Font.center
-      , paddingEach cfg.size.normal.padding
+      [ Border.rounded borderRadius
+      , Border.shadow shadow
+      , center
+      , paddingEach size.normal.padding
       ]
+
     builders =
-      { danger = applyStyles <| makeVariant cfg.color.danger
-      , warning = applyStyles <| makeVariant cfg.color.warning
-      , success = applyStyles <| makeVariant cfg.color.success
-      , primary = applyStyles <| makeVariant cfg.color.primary
-      , default = applyStyles <| makeVariant cfg.color.default
+      { danger = applyStyles <| makeVariant color.danger
+      , warning = applyStyles <| makeVariant color.warning
+      , success = applyStyles <| makeVariant color.success
+      , primary = applyStyles <| makeVariant color.primary
+      , default = applyStyles <| makeVariant color.default
       }
-    btn = ElInpt.button |> (applyStyles btnStyle)
-  in
-    { builders = builders
-    , elements =
+
+    btn = applyStyles btnStyle ElInpt.button
+
+    elements =
       { btn = btn
-      , defaultBtn = btn |> builders.default
-      , dangerBtn = btn |> builders.danger
-      , warningBtn = btn |> builders.warning
-      , successBtn = btn |> builders.success
-      , primaryBtn = btn |> builders.primary
+      , defaultBtn = builders.default btn
+      , dangerBtn = builders.danger btn
+      , warningBtn = builders.warning btn
+      , successBtn = builders.success btn
+      , primaryBtn = builders.primary btn
       }
-    }
+  in
+    ButtonElements builders elements

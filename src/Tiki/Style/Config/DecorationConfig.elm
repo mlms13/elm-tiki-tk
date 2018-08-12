@@ -1,12 +1,12 @@
 module Tiki.Style.Config.DecorationConfig exposing
   ( DecorationConfig
-  , BoxShadow
+  , ShadowConfig
   , default
   )
 
 import Color exposing (Color, rgba)
 
-type alias BoxShadow =
+type alias ShadowConfig =
   { offset : (Float, Float)
   , blur : Float
   , size : Float
@@ -24,7 +24,7 @@ type BorderConfig
 
 type alias DecorationConfig =
   { borderRadius : Int
-  , boxShadow : BoxShadow
+  , shadow : ShadowConfig
   -- , boxShadowInset : BoxShadow
   , border : BorderConfig
   }
@@ -32,7 +32,7 @@ type alias DecorationConfig =
 default : DecorationConfig
 default =
   { borderRadius = 3
-  , boxShadow = BoxShadow (1.0, 1.0) 0.0 0.0 (rgba 0 0 0 0.15)
+  , shadow = ShadowConfig (1.0, 1.0) 0.0 0.0 (rgba 0 0 0 0.15)
   -- , boxShadowInset = BoxShadow (0.0, 1.0) 2.0 0.0 (rgba 0 0 0 0.2)
   , border = None
   }
