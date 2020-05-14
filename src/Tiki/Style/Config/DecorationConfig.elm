@@ -13,14 +13,9 @@ type alias ShadowConfig =
   , color : Color
   }
 
-type BorderColor
-  = Custom Color
-  | Background
-  | Foreground
-
 type BorderConfig
   = None
-  | Solid Int BorderColor
+  | Solid Int Color
 
 type alias DecorationConfig =
   { borderRadius : Int

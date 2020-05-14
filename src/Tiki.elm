@@ -29,7 +29,6 @@ generate =
   --         , Border.solid
   --         , Border.color c
   --         ]
-
   --     in
   --     case border of
   --       None -> []
@@ -41,31 +40,12 @@ generate =
   --         make width (extractBgColor bg)
 
   --   makeBtnVariant : ColorPair -> List (Attribute msg)
-  --   makeBtnVariant { bg, fg } =
-  --     [bgColorToAttr bg] ++
 
-  --     [ ]
-
-  --   btn =
-  --     , Font.center
   --     -- , font weight (Font.bold vs Font.semibold, etc)
   --     -- , line-height
-  --     , paddingEach size.normal.padding
   --     -- , user-select none
   --     -- , white-space nowrap
-  --     ] ++ (makeBtnVariant color.default)
 
-  --   danger =
-  --     makeBtnVariant color.danger
-
-  --   warning =
-  --     makeBtnVariant color.warning
-
-  --   success =
-  --     makeBtnVariant color.success
-
-  --   primary =
-  --     makeBtnVariant color.primary
   -- in
   -- { danger = makeStyles danger
   -- , warning = makeStyles warning

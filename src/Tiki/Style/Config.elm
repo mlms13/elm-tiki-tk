@@ -5,20 +5,21 @@ import Tiki.Style.Config.ColorConfig as ColorCfg
 import Tiki.Style.Config.DecorationConfig as Decoration
 import Tiki.Style.Config.SizeConfig as SizeCfg
 
+-- TODO: where does weight live
 type alias FontConfig =
   { family : List Font
   , size : Int
   , lineHeight : Float
   }
 
-type alias Config =
+type alias Theme =
   { color : ColorCfg.ColorConfig
   , size : SizeCfg.AllSizeConfig
   , font :
-    { sans : FontConfig
-    , serif : FontConfig
+    { copy : FontConfig
+    , heading : FontConfig
+    , control : FontConfig -- form controls, input,
     , mono : FontConfig
-    , base : FontConfig
     }
   , link : {}
   , heading : {}
